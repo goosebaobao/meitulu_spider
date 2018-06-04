@@ -26,6 +26,7 @@ class MeituluSpider(object):
              83,76,65,57,39,126,103,2534,2533,2512,862,7519,7518,7517,7516,7515,7514,7513,7512,7511,7510,7509,7508,
              6992,4551,4550,4542,2621,12466,6996,6993,4590,2303,2294,2285,1025,830,245,233,215,183,6982,4555,142,
              109]
+    items = [4805, 9830]
 
     def __init__(self):
         # 30 秒超时
@@ -119,7 +120,7 @@ if __name__ == '__main__':
         urls = []
 
         # 这个目录保存视频文件
-        os.chdir('c:\pic')
+        os.chdir('c:\mtl')
 
         print('\tdownload item %d' % item)
         for page in range(1, MeituluSpider.page_max):
@@ -145,7 +146,7 @@ if __name__ == '__main__':
             title = title.replace('*', '_')
             title = title.replace('>', '_')
 
-            path = '%d_%s' % (item, title)
+            path = '%s_%d' % (title,item)
             if not os.path.exists(path):
                 os.mkdir(path)
             os.chdir(path)
